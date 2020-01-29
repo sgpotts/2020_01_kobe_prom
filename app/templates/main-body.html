@@ -1,0 +1,287 @@
+<div class="hero-section dark-background">
+  <div class="photo-section">
+    <div class="photo-wrapper">
+      <img src="//media.inquirer.com/storage/inquirer/projects/2020/01/kobe-prom/BTR67NH3Y5EPDHOQPBIX5O67VA.jpg" alt="">
+    </div>
+  </div>
+
+  <div class="left-section">
+    <h1>Kobe and Brandy’s high school prom</h1>
+    <div class="sub-head">An oral history of the Philadelphia dance that became legend</div>
+  </div>
+
+</div>
+<div class="intro-section dark-background">
+  <div class="byline-section">
+    <div class="byline">
+      by
+      <a href="https://www.inquirer.com/author/orso_anna/">Anna Orso</a>,
+      <a href="https://www.inquirer.com/author/steele_allison/">Allison Steele</a>,
+      <a href="https://www.inquirer.com/author/mcdaniel_justine/">Justine McDaniel</a>,
+      and
+      <a href="https://www.inquirer.com/author/lubrano_alfred/">Alfred Lubrano</a>, January 29, 2020
+    </div>
+    {% include "./partials/socialshare.html" %}
+
+  </div>
+
+
+
+  {% for item in site.story.intro %}
+    <div class="text-item">
+      <p>{{item.value | md | safe}}</p>
+    </div>
+
+  {% endfor %}
+</div>
+
+<div class="body-section">
+  {% set subheaditem = 0 %}
+  {% for item in site.story.body %}
+    {% if item.type === "Subhead" %}
+      {% set subheaditem = loop.index %}
+      <div class="text-item">
+        <h3>{{item.value}}</h3>
+      </div>
+    {% endif %}
+    {% if item.type === "text" %}
+      {% if subheaditem === loop.index - 1 %}
+        <div class="text-item">
+          <p class="drop-cap">{{item.value}}</p>
+        </div>
+      {% else  %}
+        <div class="text-item">
+          <p>{{item.value | md | safe}}</p>
+        </div>
+      {% endif %}
+    {% endif %}
+
+    {% if item.type === "quotes" %}
+      <div class="quote-wrapper">
+        {% for quote in item.value %}
+          <div class="quote-item {{'has-thumb' if tags[quote.Tag]}}">
+            {% if tags[quote.Tag] %}
+            <div class="q-thumb {{'center-fit' if quote.Tag === 'OBannon'}}">
+            <img src="//media.inquirer.com/storage/inquirer/projects/2020/01/kobe-prom/{{tags[quote.Tag][0].url}}" alt="">
+          </div>
+            {% endif %}
+
+            <div class="q-title">
+              {{quote.Name}}
+            </div>
+            <div class="q-label">
+              {{quote.Label}}
+            </div>
+            <div class="q-text">
+              {{quote.Text | md | safe}}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+    {% endif %}
+    {% if item.type === "image" %}
+      {% if item.value.Type === "large" %}
+        <div class="image-wrapper large-image dark-background">
+          <div class="large-container">
+            <img src="{{item.value.Url}}" alt="">
+            <div class="img-credit">
+              {{item.value.Credit}}
+            </div>
+            <div class="img-caption">
+              {{item.value.Caption | md | safe}}
+            </div>
+          </div>
+        </div>
+      {% else  %}
+        <div class="text-item">
+          <div class="image-wrapper">
+            <img src="{{item.value.Url}}" alt="">
+            <div class="img-credit">
+              {{item.value.Credit}}
+            </div>
+            <div class="img-caption">
+              {{item.value.Caption}}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+    {% endif %}
+    {% if item.type === "doubleimage" %}
+    <div class="image-wrapper double-image dark-background">
+
+        <div class="side-by-side">
+          <div class="leftimg">
+            <img src="//media.inquirer.com/storage/inquirer/projects/2020/01/kobe-prom/OVTUJ32ZRJFJXEY6ME7OXTPF3U.jpg" alt="">
+          </div>
+          <div class="rightimg">
+            <img src="//media.inquirer.com/storage/inquirer/projects/2020/01/kobe-prom/RTCFEZQ7QVCYTK4GRA5UMXGZ3A.jpg" alt="">
+          </div>
+        </div>
+        <div class="img-credit">
+          <span class="mobile-credit">TOP</span><span class="desktop-credit">LEFT</span>: COURTESY STACY MOSCOTTI MOORE; <span class="mobile-credit">BOTTOM</span><span class="desktop-credit">RIGHT</span>: DAVID MAIALETTI / Staff Photographer
+        </div>
+        <div class="img-caption">
+          “I enjoyed the prom, but definitely was aware of the necessity to get a photo for the school newspaper,” said Stacy Moscotti Moore, who graduated with Kobe Bryant and took this photo of him with R&B singer Brandy.  She saved copies of the newspaper and the photo.
+        </div>
+
+    </div>
+    {% endif %}
+    {% if item.type === "gallery" %}
+      <div class="image-wrapper gallery-wrapper dark-background">
+    {% include "gallery.html" %}
+    </div>
+    {% endif %}
+    {% if item.type === 'Video' %}
+       <div class="image-wrapper">
+    <div class="video-wrapper">
+      <div class="powa" id="powa-8cf716ae-8710-4444-b7dc-62ef16bd6ccc" data-env="prod" data-org="pmn" data-uuid="8cf716ae-8710-4444-b7dc-62ef16bd6ccc" data-ad-companion="coAd" data-aspect-ratio="0.562"><script src="//dzyf5jtgd0sxp.cloudfront.net/prod/powaBoot.js"></script></div>
+      <div class="img-caption">
+        Kobe Bryant and his famous date made the 1996 Lower Merion High School prom a night to remember. <a href="http://www.nbcphiladelphia.com/">NBC10 news cameras captured the moment they arrived.</a>
+
+      </div>
+    </div>
+    </div>
+
+    {% endif %}
+    {% if item.type === 'Ad' %}
+      {% if item.value === "ad1" %}
+      <div id="ad1010-sticky" data-ad-name="cube" class="arc-ad-wrapper container-column spaced spaced-top spaced-lg righ-rail-ad-desktop ">
+      <div class="container-row justify-center">
+          <div id="ad1010" class="arcad ad-responsive"></div>
+          <script>
+              (function(helpers) {
+                  if (window.scrollUser === false) window.helpers.initalizeAd({
+                      "id": "ad1010",
+                      "slotName": "phl.news/obituaries",
+                      "adType": "cube",
+                      "dimensions": "[[[970, 90], [728, 90]], [[728, 90]], [[300, 300], [300, 250]]]",
+                      "display": "all",
+                      "bidding": {
+                          "amazon": {
+                              "enabled": true,
+                              "slotSuffix": "-mrec_21_article"
+                          }
+                      },
+                   "sizemap": {
+                       "breakpoints": "[[1000, 0], [730, 0], [0, 0]]",
+                       "refresh": true
+                   },
+                      "targeting": {
+                          "position": "mrec_21",
+                          "position_type": "mrec_21_article"
+                      }
+                  }, {
+                      lazyLoad: true
+                  })
+              })(window.helpers);
+          </script>
+      </div>
+  </div>
+      {% endif %}
+      {% if item.value === "ad2" %}
+      <div id="ad2010-sticky" data-ad-name="cube" class="arc-ad-wrapper container-column spaced spaced-top spaced-lg righ-rail-ad-desktop ">
+      <div class="container-row justify-center">
+          <div id="ad2010" class="arcad ad-responsive"></div>
+          <script>
+              (function(helpers) {
+                  if (window.scrollUser === false) window.helpers.initalizeAd({
+                      "id": "ad2010",
+                      "slotName": "phl.news/obituaries",
+                      "adType": "cube",
+                      "dimensions": "[[[970, 90], [728, 90]], [[728, 90]], [[300, 300], [300, 250]]]",
+                      "display": "all",
+                      "bidding": {
+                          "amazon": {
+                              "enabled": true,
+                              "slotSuffix": "-mrec_22_article"
+                          }
+                      },
+                   "sizemap": {
+                       "breakpoints": "[[1000, 0], [730, 0], [0, 0]]",
+                       "refresh": true
+                   },
+                      "targeting": {
+                          "position": "mrec_22",
+                          "position_type": "mrec_22_article"
+                      }
+                  }, {
+                      lazyLoad: true
+                  })
+              })(window.helpers);
+          </script>
+      </div>
+  </div>
+      {% endif %}
+      {% if item.value === "ad3" %}
+      <div id="ad3010-sticky" data-ad-name="cube" class="arc-ad-wrapper container-column spaced spaced-top spaced-lg righ-rail-ad-desktop ">
+      <div class="container-row justify-center">
+          <div id="ad3010" class="arcad ad-responsive"></div>
+          <script>
+              (function(helpers) {
+                  if (window.scrollUser === false) window.helpers.initalizeAd({
+                      "id": "ad3010",
+                      "slotName": "phl.news/obituaries",
+                      "adType": "cube",
+                      "dimensions": "[[[970, 90], [728, 90]], [[728, 90]], [[300, 300], [300, 250]]]",
+                      "display": "all",
+                      "bidding": {
+                          "amazon": {
+                              "enabled": true,
+                              "slotSuffix": "-mrec_23_article"
+                          }
+                      },
+                   "sizemap": {
+                       "breakpoints": "[[1000, 0], [730, 0], [0, 0]]",
+                       "refresh": true
+                   },
+                      "targeting": {
+                          "position": "mrec_23",
+                          "position_type": "mrec_23_article"
+                      }
+                  }, {
+                      lazyLoad: true
+                  })
+              })(window.helpers);
+          </script>
+      </div>
+  </div>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  <div class="text-item"><p><i>Yearbook photos courtesy of Laura Frangiosa.</i></p></div>
+  <div data-type="text" class="card paragraph-spacing collection-item "> <div class="card-content"> <div class="related-stories-default"> <div class="recommender-header font-black uppercase">Related stories</div> <hr class="bg-accent spaced spaced-top spaced-xs"> <ul class="inline font-bold spaced spaced-top spaced-sm"> <li class="hover-underlined " data-rc-endpoint="default"> <a data-link-type="related-stories" class="hover-unchanged-color hover-underlined headline-link" href="/opinion/commentary/kobe-bryant-death-lower-merion-20200127.html">‘It was Kobe madness, and I was all in’: Remembering my Lower Merion classmate | Perspective</a> </li> <li class="hover-underlined spaced spaced-top spaced-sm" data-rc-endpoint="default"> <a data-link-type="related-stories" class="hover-unchanged-color hover-underlined headline-link" href="/sixers/kobe-bryant-philadelphia-sixers-soft-pretzels-mustard-locker-20200127.html">Kobe always had treat success in Philly | From the archives</a> </li> <li class="hover-underlined spaced spaced-top spaced-sm" data-rc-endpoint="default"> <a data-link-type="related-stories" class="hover-unchanged-color hover-underlined headline-link" href="/opinion/commentary/kobe-bryant-death-auschwitz-anniversary-20200127.html">Kobe Bryant was a neighbor and a light to Lower Merion | Opinion</a> </li> </ul> </div> <div class="related-stories-inbody news hidden"> <div class="recommender-header font-black uppercase">Related stories</div> <hr class="bg-accent spaced spaced-top spaced-xs"> <div class="inline font-bold"> <div class="card "> <div class="card-content align-items-start container-row justify-space-between related-stories "> <div class="full-width spaced card-media text-image-left text-image-small spaced-right spaced-sm flex"> <div class="wrapper clearfix col pb-feature pb-layout-item pb-f-utilities-lead-art" id=""> </div> </div> <div class="text-container full-width container-column flex-2"> <h4 class="spaced spaced-sm spaced-bottom font-bold align-left"><a data-link-type="related-stories" class="hover-unchanged-color headline-link" href="/opinion/commentary/kobe-bryant-death-lower-merion-20200127.html" data-pb-field="content.headlines.basic" data-pb-field-type="text" data-pb-url-field="canonical_url" data-pb-placeholder="Write headline here">‘It was Kobe madness, and I was all in’: Remembering my Lower Merion classmate | Perspective</a></h4> <div class="byline-timestamp-container container-row align-items-center full-height"> <div class="byline-wrapper container-row"> <div class="card-byline font-semi-bold "> <span class="spaced spaced-right spaced-xs"> <span class="author-name">by Dan Gross, For the Inquirer</span> </span> </div> </div> </div> </div> </div> <hr class=" bg-grey-light side-margins"> </div> <div class="card "> <div class="card-content align-items-start container-row justify-space-between related-stories "> <div class="full-width spaced card-media text-image-left text-image-small spaced-right spaced-sm flex"> <div class="wrapper clearfix col pb-feature pb-layout-item pb-f-utilities-lead-art" id=""> </div> </div> <div class="text-container full-width container-column flex-2"> <h4 class="spaced spaced-sm spaced-bottom font-bold align-left"><a data-link-type="related-stories" class="hover-unchanged-color headline-link" href="/sixers/kobe-bryant-philadelphia-sixers-soft-pretzels-mustard-locker-20200127.html" data-pb-field="content.headlines.web" data-pb-field-type="text" data-pb-url-field="canonical_url" data-pb-placeholder="Write headline here">Kobe always had treat success in Philly | From the archives</a></h4> <div class="byline-timestamp-container container-row align-items-center full-height"> <div class="byline-wrapper container-row"> <div class="card-byline font-semi-bold "> <span class="spaced spaced-right spaced-xs"> <span class="author-name">by Bob Cooney</span> </span> </div> </div> </div> </div> </div> <hr class=" bg-grey-light side-margins"> </div> <div class="card "> <div class="card-content align-items-start container-row justify-space-between related-stories "> <div class="full-width spaced card-media text-image-left text-image-small spaced-right spaced-sm flex"> <div class="wrapper clearfix col pb-feature pb-layout-item pb-f-utilities-lead-art" id=""> </div> </div> <div class="text-container full-width container-column flex-2"> <h4 class="spaced spaced-sm spaced-bottom font-bold align-left"><a data-link-type="related-stories" class="hover-unchanged-color headline-link" href="/opinion/commentary/kobe-bryant-death-auschwitz-anniversary-20200127.html" data-pb-field="content.headlines.basic" data-pb-field-type="text" data-pb-url-field="canonical_url" data-pb-placeholder="Write headline here">Kobe Bryant was a neighbor and a light to Lower Merion | Opinion</a></h4> <div class="byline-timestamp-container container-row align-items-center full-height"> <div class="byline-wrapper container-row"> <div class="card-byline font-semi-bold "> <span class="spaced spaced-right spaced-xs"> <span class="author-name">by Neil Cooper, For the Inquirer</span> </span> </div> </div> </div> </div> </div> <hr class=" bg-grey-light side-margins"> </div> </div> </div> </div> </div>
+  <div id="ad4010-sticky" data-ad-name="cube" class="arc-ad-wrapper container-column spaced spaced-top spaced-lg righ-rail-ad-desktop ">
+          <div class="container-row justify-center">
+              <div id="ad4010" class="arcad ad-responsive"></div>
+              <script>
+                  (function(helpers) {
+                      if (window.scrollUser === false) window.helpers.initalizeAd({
+                          "id": "ad4010",
+                          "slotName": "phl.news/obituaries",
+                          "adType": "cube",
+                          "dimensions": "[[[970, 90], [728, 90]], [[728, 90]], [[300, 300], [300, 250]]]",
+                          "display": "all",
+                          "bidding": {
+                              "amazon": {
+                                  "enabled": true,
+                                  "slotSuffix": "-mrec_24_article"
+                              }
+                          },
+                       "sizemap": {
+                           "breakpoints": "[[1000, 0], [730, 0], [0, 0]]",
+                           "refresh": true
+                       },
+                          "targeting": {
+                              "position": "mrec_24",
+                              "position_type": "mrec_24_article"
+                          }
+                      }, {
+                          lazyLoad: true
+                      })
+                  })(window.helpers);
+              </script>
+          </div>
+      </div>
+</div>

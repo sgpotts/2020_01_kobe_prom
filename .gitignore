@@ -1,0 +1,15 @@
+node_modules/
+.tmp
+build
+*.log
+.idea
+package-lock.json
+credentials.json
+token.json
+aws_credentials.json
+config.json
+.grunt
+.DS_Store
+.env
+data/
+dist
